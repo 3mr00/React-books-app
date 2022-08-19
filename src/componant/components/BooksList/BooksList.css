@@ -1,0 +1,12 @@
+.title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.divbooksimgs {
+  position: relative;
+}
+.parentBookDiv {
+  margin-top: -6%;
+  margin-bottom: 10%;
+}

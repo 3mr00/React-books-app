@@ -1,0 +1,125 @@
+/*Header banner*/
+.layout {
+  padding: 10px 87px;
+  padding-top: 6%;
+}
+.Header-banner-container {
+  padding: 100px 40px;
+  background-color: #f3e7dd;
+  border-radius: 15px;
+  position: relative;
+  height: 330px;
+  line-height: 1;
+  color: #423c8a;
+  width: 100%;
+  margin-top: 120px;
+  margin-bottom: 120px;
+}
+
+/*Content banner*/
+
+.banner-Content {
+  display: flex;
+  justify-content: space-between;
+}
+.banner-Content button {
+  border-radius: 5px;
+  padding: 13px 18px;
+  background-color: #c2a792;
+  color: #eee;
+  border: none;
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: ease all 0.5s;
+}
+/*Content left banner*/
+
+.banner-Content button:hover {
+  background-color: #a47b5c;
+  transition: ease all 0.5s;
+}
+
+.banner-Content .left h3 {
+  font-weight: 900;
+  font-size: 50px;
+}
+.banner-Content .left h6 {
+  font-weight: 700;
+  font-size: 19px;
+  width: 72%;
+  text-align: justify;
+  padding-top: 1%;
+  line-height: 1.6;
+  color: #bbb3ae;
+}
+.banner-Content .left p {
+  margin: 18px;
+}
+.left {
+  margin-top: -2%;
+  align-items: flex-start;
+  flex-direction: column;
+  display: flex;
+  margin-left: 25px;
+}
+
+/*Content right banner*/
+.banner-Content .right {
+  position: relative;
+  width: 50%;
+  margin-top: -8%;
+}
+
+.headerimg {
+  max-width: 75%;
+  height: auto;
+  position: absolute;
+  z-index: 100;
+  margin-left: 15%;
+}
+
+@media screen and (max-width: 800px) {
+  .Header-banner-container {
+    height: 560px;
+    margin-top: 80px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .banner-Content .left h3 {
+    font-weight: 900;
+    font-size: 50px;
+    margin-left: 5px;
+  }
+  .banner-Content .left p {
+    margin: 18px;
+  }
+  .banner-Content .right h3 {
+    font-size: 45px;
+  }
+  .banner-Content .right p {
+    font-size: 18px;
+  }
+  .banner-Content .right .company-desc {
+    font-size: 14px;
+  }
+  .banner-Content {
+    flex-wrap: wrap;
+    grid-gap: 20px;
+    grid-gap: 30px;
+    gap: 20px;
+    /* flex-direction: column; */
+    display: grid;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .banner-Content {
+    flex-wrap: wrap;
+    grid-gap: 20px;
+    grid-gap: 30px;
+    gap: 20px;
+    display: flex;
+  }
+}
