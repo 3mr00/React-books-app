@@ -141,5 +141,9 @@
   width: 85% !important;
   text-align: center;
 }
+  .Header-banner-container {
+  width: 160% !important;
+  margin-left: -30% !important;
+}
 
 }
