@@ -10,7 +10,7 @@ const HeaderBanner = () => {
             <h3>Build your library</h3>
             <br />
             <h6>Buy two selected books and get one for free</h6>
-            <a href="/">
+            <a href="#">
               <button type="button">View all </button>
             </a>
           </div>
