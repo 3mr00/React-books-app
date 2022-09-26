@@ -1,4 +1,5 @@
 /*Header banner*/
+
 .layout {
   padding: 10px 87px;
   padding-top: 6%;
@@ -80,38 +81,47 @@
   margin-left: 15%;
 }
 
-@media screen and (max-width: 800px) {
-  .Header-banner-container {
-    height: 560px;
-    margin-top: 80px;
-  }
-}
-@media screen and (max-width: 800px) {
+@media  screen and (max-width: 1199px) {
   .banner-Content .left h3 {
     font-weight: 900;
-    font-size: 50px;
-    margin-left: 5px;
-  }
-  .banner-Content .left p {
-    margin: 18px;
-  }
-  .banner-Content .right h3 {
-    font-size: 45px;
-  }
-  .banner-Content .right p {
-    font-size: 18px;
-  }
-  .banner-Content .right .company-desc {
-    font-size: 14px;
-  }
-  .banner-Content {
-    flex-wrap: wrap;
-    grid-gap: 20px;
-    grid-gap: 30px;
-    gap: 20px;
-    /* flex-direction: column; */
-    display: grid;
-  }
+    font-size: 30px !important;
+}
+}
+@media screen and (max-width: 800px) {
+  .headerimg {
+    display: none !important;
+}
+
+.Header-banner-container {
+
+  display: flex;
+  justify-content: center;
+}
+.banner-Content {
+  display: inline !important;
+  justify-content: space-between;
+}
+.left {
+  margin-top: 0% !important;
+  align-items: center !important;
+  flex-direction: column !important;
+  display: flex !important;
+  margin: auto !important;
+}
+.banner-Content .right {
+  width: 0% !important;
+  margin-top: 0% !important;
+}
+.banner-Content .left h3 {
+  font-weight: 900;
+  font-size: 27px !important;
+}
+.banner-Content .left h6 {
+  font-size: 15px !important;
+  width: 72% !important;
+ text-align:initial;
+
+}
 }
 
 @media screen and (max-width: 450px) {
@@ -122,4 +132,14 @@
     gap: 20px;
     display: flex;
   }
+  .banner-Content .left h3 {
+    font-weight: 900;
+    font-size: 15px !important;
+}
+.banner-Content .left h6 {
+  font-size: 10px !important;
+  width: 85% !important;
+  text-align: center;
+}
+
 }

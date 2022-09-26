@@ -27,7 +27,13 @@ const BooksList = () => {
           </a>
         </div>
 
-        <div className="grid grid-cols-6 gap-6 px-20">
+        <div className="grid
+        2xl:grid-cols-6 
+        xl:grid-cols-6 
+        lg:md:grid-cols-5 
+        md:grid-cols-4 
+        sm:grid-cols-2 
+        gap-6 px-20  ">
           <Book />
         </div>
         {products.length >= 1 ? <Paginate /> : null}

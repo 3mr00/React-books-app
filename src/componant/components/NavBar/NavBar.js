@@ -2,17 +2,27 @@ import React, { useEffect, useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import { FiHeart } from "react-icons/fi";
 import "./NavBar.css";
+import Media from "react-media";
+
+
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const NavBar = () => {
-  //navbar when scroll
+  //open or close nav mobile-v
+  const [expanded, setExpaned] = useState(false);
 
-  const [navSize, setnavSize] = useState("unset");
+  //navbar when scroll
   const [marginTopNav, setmarginTopNav] = useState("");
   const [boxshadow, setBoxshadow] = useState("");
 
+  useEffect(() => {
+    AOS.init({ duration: 1000, once: false });
+    AOS.refresh();
+  }, [expanded]);
+
   const listenScrollEvent = () => {
     window.scrollY > 10 ? setmarginTopNav("-8%") : setmarginTopNav("8%");
-    window.scrollY > 10 ? setnavSize("2px 0px 20px #000") : setnavSize("unset");
     window.scrollY > 10
       ? setBoxshadow(
           "0 0.5rem 1rem rgb(0 0 0 / 15%), inset 0 -1px 0 rgb(0 0 0 / 15%)"
@@ -29,107 +39,123 @@ const NavBar = () => {
   return (
     <>
       {/* frist nav */}
-
-      <nav
-        style={{ boxShadow: boxshadow }}
-        className="pt frist_nav flex justify-around py-8 mx-auto bg-white"
+      <Media
+        queries={{
+          small: "(max-width: 599px)",
+          medium: "(min-width: 600px) and (max-width: 1199px)",
+          large: "(min-width: 1200px)",
+        }}
       >
-        <div className="flex items-center">
-          <h3 className="font-bold text-2xl  text-black-500">
-            <a href="/">Booksy</a>
-          </h3>
-        </div>
-        {/* <!-- left nav section --> */}
-        <div className="items-center hidden space-x-8 lg:flex">
-          <div className="searchBar">
-            <input
-              className="font-bold searchQueryInput"
-              type="text"
-              name="searchQueryInput"
-              placeholder="Search by author, title, name"
-            />
-            <button
-              className=" searchQuerySubmit"
-              type="submit"
-              name="searchQuerySubmit"
-            >
-              <FiSearch />
-            </button>
+        {(matches) => (
+          <nav
+            style={{ boxShadow: expanded === true ? "none" : boxshadow }}
+            className={`
+            pt frist_nav flex justify-around py-8 mx-auto
+             bg-white ${expanded== true ?'padding_nav_mobile':""}`
+            }
+          >
+          <div className="flex items-center">
+            <h3 className="font-bold text-2xl  text-black-500">
+              <a href="/">Booksy</a>
+            </h3>
           </div>
-        </div>
-        {/* <!-- right nav section --> */}
-        <div className="right_nav  flex items-center space-x-2">
-          <FiHeart />
-          <a className="smGlobalBtn font-bold" href="#">
-            0
-          </a>
-          <h3 className="font-bold text-slate-400">EN</h3>
-        </div>
-      </nav>
+            {/* <!-- left nav section --> */}
+            {matches.large && (
+              <div className="items-center  space-x-8 lg:flex">
+                <div className="searchBar">
+                  <input
+                    className="font-bold searchQueryInput xl:p-"
+                    type="text"
+                    name="searchQueryInput"
+                    placeholder="Search by author, title, name"
+                  />
+                  <button
+                    className=" searchQuerySubmit"
+                    type="submit"
+                    name="searchQuerySubmit"
+                  >
+                    <FiSearch />
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* <!-- right nav section --> */}
+            <div className="right_nav  flex items-center space-x-2">
+              <FiHeart />
+              <a className="smGlobalBtn font-bold" href="#">
+                0
+              </a>
+              <h3 className="font-bold text-slate-400">EN</h3>
+            </div>
+            <div class="icon_nav_mob" 
+            onClick={() => setExpaned(!expanded)}>☰</div>
+          </nav>
+        )}
+      </Media>
 
       {/* sec nav */}
-
-      <nav
-        style={{
-          marginTop: marginTopNav,
-          boxShadow: navSize,
+      <Media
+        queries={{
+          small: "(max-width: 599px)",
+          medium: "(max-width: 1199px)",
+          large: "(min-width: 1200px)",
         }}
-        className=" sec_nav flex justify-around py-0 mx-auto bg-white"
       >
-        {/* <!-- left header section --> */}
-        <div className="gap_sec_nav font-bold items-center hidden  lg:flex">
-          <a className="nav_links text-slate-400" href="#">
-            Home
-          </a>
-          <a className="nav_links text-slate-400" href="#">
-            Bestseller
-          </a>
-          <div className="dropdown inline-block relative">
-            <button className="text-slate-400 inline-flex items-center">
-              <span className=" nav_links ">Dropdown</span>
-              <svg
-                className="fill-current h-4 w-8"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-              >
-                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />{" "}
-              </svg>
-            </button>
-            <ul className="dropdown-menu absolute hidden text-gray-700 ">
-              <li className="">
-                <a
-                  className="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
-                  href="#"
-                >
-                  One
-                </a>
-              </li>
-              <li className="">
-                <a
-                  className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
-                  href="#"
-                >
-                  Two
-                </a>
-              </li>
-              <li className="">
-                <a
-                  className="rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
-                  href="#"
-                >
-                  Three
-                </a>
-              </li>
-            </ul>
-          </div>
-          <a className="nav_links text-slate-400" href="#">
-            Find a store
-          </a>
-          <a className="nav_links text-slate-400" href="#">
-            Blog
-          </a>
-        </div>
-      </nav>
+        {(matches) => (
+          <nav
+            style={{
+              marginTop: matches.medium ? "none" : marginTopNav,
+            }}
+            className={`sec_nav flex justify-around py-0 mx-auto bg-white ${
+              expanded === true ? "displayBlockSidebar" : " "
+            }`}
+            data-aos="fade-top"
+            data-aos-anchor="#example-anchor"
+            data-aos-offset="300"
+            data-aos-duration="300"
+          >
+            {/* <!-- left header section --> */}
+            <div
+              className={`gap_sec_nav font-bold items-center  lg:flex ${
+                matches.medium && "mobile"
+              }`}
+            >
+              <a className="nav_links text-slate-400" href="#">
+                Home
+              </a>
+
+              <a className="nav_links text-slate-400" href="#">
+                Bestseller
+              </a>
+
+              <a className="nav_links text-slate-400" href="#">
+                Find a store
+              </a>
+              <a className="nav_links text-slate-400" href="#">
+                Blog
+              </a>
+              {matches.medium && (
+                <div className="searchBar search_mobile_padding ">
+                  <input
+                    className="font-bold searchQueryInput xl:p-"
+                    type="text"
+                    name="searchQueryInput"
+                    placeholder="Search by author, title, name"
+                  />
+                  <button
+                    className=" searchQuerySubmit"
+                    type="submit"
+                    name="searchQuerySubmit"
+                  >
+                    <FiSearch />
+                  </button>
+                </div>
+              )}
+            </div>
+          </nav>
+        )}
+      </Media>
     </>
   );
 };
