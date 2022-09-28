@@ -88,7 +88,7 @@ const NavBar = () => {
               </a>
               <h3 className="font-bold text-slate-400">EN</h3>
             </div>
-            <div class="icon_nav_mob" 
+            <div className="icon_nav_mob" 
             onClick={() => setExpaned(!expanded)}>☰</div>
           </nav>
         )}
