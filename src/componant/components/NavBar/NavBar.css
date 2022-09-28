@@ -59,6 +59,7 @@
   }
   .frist_nav {
     z-index: 1001 !important;
+    transition-duration: .3s;
   }
   .sec_nav {
     z-index: 1020 !important;
